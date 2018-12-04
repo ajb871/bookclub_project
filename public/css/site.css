@@ -37,7 +37,7 @@ body {
 
   display: grid;
   align-self: left;
-  grid-template-columns: 200px 200px 200px;
+  grid-template-columns: 30% 30% 30%;
   grid-template-rows:auto auto;
 }
 }
