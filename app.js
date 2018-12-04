@@ -91,6 +91,9 @@ app.post('/login', function(req, res){
 
   if (gotUser){
     if (password === userData[userIndex].password){
+      // Send user's data to homepage
+      let thisUser = userData[userIndex]
+      console.log(thisUser);
       res.redirect('/home');
     }else{ 
       res.render('login', {error: 'Incorrect password, try again!'});
