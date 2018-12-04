@@ -15,6 +15,8 @@ app.set('view engine', 'ejs');
 let userFile = fs.readFileSync('users.json');
 let userData = JSON.parse(userFile);
 
+// Create book array
+var books = ['Frankenstein.html', 'Pride_and_Prejudice.html', 'Tom_Sawyer.html']
 
 ////// Sign up Page here //////
 app.get('/', function(req, res){
@@ -108,7 +110,9 @@ app.get('/home', function(req,res){
 ////this is a comment to test Sawyer's commits
 
 app.get('/book', function(req,res){
-  res.render('book');
+  // Pass a book to the "book" EJS page -> will come from the user's data
+  let book = books[0];
+  res.render('book',{book: book});
 });
 
 ////the main page here

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include partials/head %>
+</head>
+<body>
+	<!-- Create path based on book pased to this EJS file -->
+	<% var path = '../content/' + book %>
+	<%- include(path) %>
+
+	<script type="text/javascript">
+		// Using Javascript to hide "pre" as well as isolate the title
+		var title = document.getElementsByTagName('h1');
+		var pre = document.getElementsByTagName('pre');
+		var image = document.getElementsByTagName('img');
+
+		// Title
+		for (var i = 0; i < title.length; i++) {
+			console.log(title[i].innerText);
+		}
+		// Pre Display
+		for (var i = 0; i < pre.length; i++) {
+			pre[i].style.display = "none"
+		}
+		// Image display (not working currently)
+		for (var i = 0; i < image.length; i++) {
+			image[i].style.display = "none"
+		}
+
+
+	</script>
+</body>
+</html>
