@@ -90,14 +90,11 @@ app.post('/login', function(req, res){
 
 });
 
-<<<<<<< HEAD
 
 app.get('/home', function(req,res){
   res.render('home');
 });
-=======
 ////this is a comment to test Sawyer's commits
->>>>>>> f1d67e525eda162a74a6d8eb190f0fdf845e0d7b
 
 ////the main page here
 // app.post('/library', function (req, res) {
