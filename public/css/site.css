@@ -1,7 +1,5 @@
 body {
 	font-family: 'Segoe UI', sans-serif;
-	margin: auto;
-	display: block;
 }
 
 .container {
@@ -13,12 +11,14 @@ body {
 	text-align: center;
 }
 
+/* Sign up */
 .sign-up {
 	color: white;
 	background-color: grey;
-	margin: 10% auto;
+	margin:75px auto;
 	padding: 40px;
-	width: 500px;
+	width: 80%;
+	max-width: 500px;
 }
 .sign-up a {
 	color: lightblue;

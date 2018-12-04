@@ -38,13 +38,22 @@ app.post('/', function(req, res){
     res.render('signup', {success: null, error: 'That username is taken, try again!'});
   } else {
     if (password === password2){
+      //A - Created "newUser" variable to push to userData
+      let newUser = {
+        username: username,
+        password: password,
+        book: null,
+        bookmark: null,
+        notes: []
+      }
       // If free username & passwords match, push & write to userdata
-      userData.push({username: username, password: password});
+      userData.push(newUser);
       let finalData = JSON.stringify(userData);
       fs.writeFile('users.json', finalData, finished);
 
       function finished(err) {
         console.log(req.body);
+        res.redirect('/home');
       }
 
       // This will redirect to user's Home page
@@ -90,16 +99,13 @@ app.post('/login', function(req, res){
 
 });
 
-///<<<<<<< HEAD
 
 app.get('/home', function(req,res){
   res.render('home');
   
 
 });
-//=======
 ////this is a comment to test Sawyer's commits
-///>>>>>
 
 ////the main page here
 // app.post('/library', function (req, res) {
