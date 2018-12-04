@@ -102,6 +102,8 @@ app.post('/login', function(req, res){
 
 app.get('/home', function(req,res){
   res.render('home');
+  
+
 });
 ////this is a comment to test Sawyer's commits
 
