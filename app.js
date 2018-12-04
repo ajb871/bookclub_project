@@ -90,11 +90,16 @@ app.post('/login', function(req, res){
 
 });
 
+<<<<<<< HEAD
+=======
+>>>>>>> 5415f050937703743cb9867a5501d01fb2e43bbf
 
 app.get('/home', function(req,res){
   res.render('home');
 });
+<<<<<<< HEAD
 ////this is a comment to test Sawyer's commits
+>>>>>>> 5415f050937703743cb9867a5501d01fb2e43bbf
 
 ////the main page here
 // app.post('/library', function (req, res) {
