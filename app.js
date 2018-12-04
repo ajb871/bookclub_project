@@ -105,6 +105,10 @@ app.get('/home', function(req,res){
 });
 ////this is a comment to test Sawyer's commits
 
+app.get('/book', function(req,res){
+  res.render('book');
+});
+
 ////the main page here
 // app.post('/library', function (req, res) {
   
