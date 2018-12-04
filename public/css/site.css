@@ -32,3 +32,12 @@ body {
 
 	font-size: 12pt
 }
+
+.shelves{
+
+  display: grid;
+  align-self: left;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows:auto auto;
+}
+}
