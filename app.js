@@ -80,7 +80,7 @@ app.post('/login', function(req, res){
 
   if (gotUser){
     if (password === userData[userIndex].password){
-      res.redirect('/library');
+      res.redirect('/home');
     }else{ 
       res.render('login', {error: 'Incorrect password, try again!'});
     }
