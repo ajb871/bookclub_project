@@ -8,12 +8,12 @@
 	<div class="container">
 		
 		<!-- Check if book is selected yet -->
-		<% var user = null %>
 		<% if (user === null){ %>
-	    <p> No user specified! </p>
-	    <% } %>	
-
-		<h1>Welcome to the Library!</h1>
+		<h1>Welcome to Book Club!</h1>
+	    <h2><a href="/login">Sign in here</a> to view your books</h2>
+	    <p>New user? <a href="/signup">Join a book club!</a></p>
+	    <% } else { %>
+		<h1>Welcome to your Library!</h1>
 
 		<h2>Please choose a book club for this month.</h2>
 
@@ -25,8 +25,8 @@
 				<ul class = "book"><h3>3</h3></ul>
 			</div>
 
-
 		</div>
+		<% } %>
 
 	</div>
 	

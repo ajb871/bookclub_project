@@ -19,6 +19,12 @@
 	<div id="main">
 		<div class="bookSpace">
 			<!-- Create path based on book pased to this EJS file -->
+			<% if(user!= null){ %>
+			<% book = user.book; %>
+			<% } else {%>
+			<% book = 'Frankenstein.html' %>
+			<% console.log('NO USER -> defaulted to frankenstein for testing'); %>
+			<% } %>
 			<% var path = '../content/' + book %>
 			<%- include(path) %>
 

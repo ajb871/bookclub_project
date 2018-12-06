@@ -15,6 +15,9 @@ app.set('view engine', 'ejs');
 let userFile = fs.readFileSync('users.json');
 let userData = JSON.parse(userFile);
 
+// Current User 
+var currUser = null;
+
 // Create book array
 var books = ['Frankenstein.html', 'Pride_and_Prejudice.html', 'Tom_Sawyer.html']
 
@@ -94,6 +97,8 @@ app.post('/login', function(req, res){
       // Send user's data to homepage
       let thisUser = userData[userIndex]
       console.log(thisUser);
+      // Set the current user
+      currUser = thisUser;
       res.redirect('/home');
     }else{ 
       res.render('login', {error: 'Incorrect password, try again!'});
@@ -106,15 +111,23 @@ app.post('/login', function(req, res){
 
 
 app.get('/home', function(req,res){
-  res.render('home');
-  
-
+  res.render('home',{user: currUser}); 
 });
+<<<<<<< HEAD
 
 app.get('/book', function(req,res){
   // Pass a book to the "book" EJS page -> will come from the user's data
   let book = books[0];
   res.render('book',{book: book});
+=======
+
+////this is a comment to test Sawyer's commits
+
+app.get('/book', function(req,res){
+  // Pass a book to the "book" EJS page -> will come from the user's data
+  res.render('book',{user: currUser});
+});
+>>>>>>> refs/remotes/origin/master
 
   ///a socket chat should also be here somewhere
   
