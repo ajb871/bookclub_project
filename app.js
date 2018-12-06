@@ -110,24 +110,18 @@ app.get('/home', function(req,res){
   
 
 });
-////this is a comment to test Sawyer's commits
 
 app.get('/book', function(req,res){
   // Pass a book to the "book" EJS page -> will come from the user's data
   let book = books[0];
   res.render('book',{book: book});
+
+  ///a socket chat should also be here somewhere
+  
+  
 });
 
-////the main page here
-// app.post('/library', function (req, res) {
-  
-// })
 
-///the individual book club page goes here
-
-// app.post('/clubBookName', function (req, res){
-
-// })
 
 
 app.listen(3000, function(){
