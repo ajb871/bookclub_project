@@ -2,13 +2,27 @@
 <html>
 <head>
 	<% include partials/head %>
+	<script type="text/javascript" src="public/js/site.js"></script>
 </head>
 <body>
-	<!-- Create path based on book pased to this EJS file -->
-	<% var path = '../content/' + book %>
-	<%- include(path) %>
+	<!--- This is an animated sidebar  -->
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="/home">Home</a>
+		<a href="#">Bookmark</a>
+		<a href="#">To Contents</a>
+		<a href="login">Sign out</a>
 
-	<script type="text/javascript">
+		<span onclick="openNav()">open</span>
+	</div>
+
+	<div id="main">
+		<div class="bookSpace">
+			<!-- Create path based on book pased to this EJS file -->
+			<% var path = '../content/' + book %>
+			<%- include(path) %>
+
+			<script type="text/javascript">
 		// Using Javascript to hide "pre" as well as isolate the title
 		var title = document.getElementsByTagName('h1');
 		var pre = document.getElementsByTagName('pre');
@@ -29,5 +43,11 @@
 
 
 	</script>
+
+</div>
+<div class="chatSpace">
+
+</div>
+</div>
 </body>
 </html>
