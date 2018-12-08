@@ -40,6 +40,7 @@ body {
   grid-template-columns: 30% 30% 30%;
   grid-template-rows:auto auto;
 }
+
 /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
@@ -78,3 +79,11 @@ body {
     margin-left: 50px;
 }
 
+
+/* Chapter Nav */
+a{
+    color: red;
+}
+a:hover {
+    color: black;
+}

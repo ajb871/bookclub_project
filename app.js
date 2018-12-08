@@ -58,6 +58,7 @@ app.post('/', function(req, res){
 
       function finished(err) {
         console.log(req.body);
+        currUser = newUser;
         res.redirect('/home');
       }
 
