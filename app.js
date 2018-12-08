@@ -1,11 +1,9 @@
 // Dependencies //
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
 var ejs = require('ejs');
 const fs = require('fs');
-const io = require('socket.io')(app.listen() =>{
-  console.log('new user connected')
-});
+const io = require('socket.io')(app.listen());
 var request = require('request');
 var bodyParser = require('body-parser');
 
@@ -27,9 +25,9 @@ var books = ['Frankenstein.html', 'Pride_and_Prejudice.html', 'Tom_Sawyer.html']
 
 ///listening for socket.io connection on every connection
 
-io.on('connection',(socket) => {
+/*io.on('connection',(socket) => {
   console.log('some user connected');
-})
+})*/
 
 ////// Sign up Page here //////
 app.get('/', function(req, res){
@@ -120,6 +118,12 @@ app.post('/login', function(req, res){
 
 });
 
+app.get('/signout', function(req,res){
+  currUser = null;
+  res.redirect('/login');
+
+})
+
 
 app.get('/home', function(req,res){
   res.render('home',{user: currUser}); 
@@ -128,11 +132,15 @@ app.get('/home', function(req,res){
 ////this is a comment to test Sawyer's commits
 
 app.get('/book', function(req,res){
-  // Pass a book to the "book" EJS page -> will come from the user's data
-  res.render('book',{user: currUser});
+  // Pass a book to the "book" EJS page -> will come from the user's data 
+  if(currUser === null){
+    res.redirect('/login');
+  } else {
+    res.render('book',{user: currUser});
+  }
 
   //
-io.on('connection', (socket) => {
+/*io.on('connection', (socket) => {
   console.log('New user connected');
 
     //listen on change_username
@@ -147,7 +155,7 @@ io.on('connection', (socket) => {
     socket.on('typing', (data) => {
       socket.broadcast.emit('typing', {username : socket.username})
     })
-})
+})*/
 });
 
 
@@ -155,4 +163,4 @@ io.on('connection', (socket) => {
 
 app.listen(3000, function(){
   console.log('app listening on port 3000!')
-})
+});
