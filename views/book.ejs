@@ -30,66 +30,93 @@
 		<div class="bookSpace">
 			<% var path = '../content/' + book %>
 			<%- include(path) %>
+			<!-- Create path based on book pased to this EJS file -->
+			<% if(user.book!= null){ %>
+			<% book = user.book; %>
+			<% } else {%>
+			<% book = 'Frankenstein.html' %>
+			<% console.log('NO USER -> defaulted to frankenstein for testing'); %>
+			<% } %>
+			<% var path = '../content/' + book %>
+			<%- include(path) %>
 
-	<script type="text/javascript">
-		// Using Javascript to hide "pre" as well as isolate the title
-		var title = document.getElementsByTagName('h1');
-		var pre = document.getElementsByTagName('pre');
-		var image = document.getElementsByTagName('img');
+			<script type="text/javascript">
+				// Using Javascript to hide "pre" as well as isolate the title
+				var title = document.getElementsByTagName('h1');
+				var pre = document.getElementsByTagName('pre');
+				var image = document.getElementsByTagName('img');
 
-		var chapters = document.getElementsByTagName('h3');
+				var chapters = document.getElementsByTagName('h3');
 
-		// For chapter names
-		function minTwoDigits(n) {
-		  return (n < 10 ? '0' : '') + n;
-		}
-
-		// Create / Set bookmark function for chapters
-		for(var i = 0; i < chapters.length; i ++) {
-			let chapter = chapters[i]
-			chapter.onclick = function() { 
-				let link = chapter.innerText;
-				// Change chapter names into links!
-				if(link[0]=='L'){ // if letter
-					link = '#' + link.replace(/\s+/g, '').toLowerCase();
-				} else {
-					let number = link.replace(/\D/g,''); //chap number
-					link = link.substring(0,4); //"chap"
-					// combine
-					link = '#' + link.toLowerCase() + minTwoDigits(number);
+				// For chapter names
+				function minTwoDigits(n) {
+					return (n < 10 ? '0' : '') + n;
 				}
 
-				// set their bookmark!
-				setBookmark(link);
-				console.log('CHAPTER CLICKED'); 
-				console.log(link)
-			}
-		}
+				// Create / Set bookmark function for chapters
+				for(var i = 0; i < chapters.length; i ++) {
+					let chapter = chapters[i]
+					chapter.onclick = function() { 
+						let link = chapter.innerText;
+						// Change chapter names into links!
+						if(link[0]=='L'){ // if letter
+							link = '#' + link.replace(/\s+/g, '').toLowerCase();
+						} else {
+							let number = link.replace(/\D/g,''); //chap number
+							link = link.substring(0,4); //"chap"
+							// combine
+							link = '#' + link.toLowerCase() + minTwoDigits(number);
+						}
 
-		// Title
-		for (var i = 0; i < title.length; i++) {
-			console.log(title[i].innerText);
-		}
-		// Pre Display
-		for (var i = 0; i < pre.length; i++) {
-			pre[i].style.display = "none"
-		}
-		// Image display (not working currently)
-		for (var i = 0; i < image.length; i++) {
-			image[i].style.display = "none"
-		}
+						// set their bookmark!
+						setBookmark(link);
+						console.log('CHAPTER CLICKED'); 
+						console.log(link)
+					}
+				}
 
-		function setBookmark(link){
-			var bookmarkLink = document.getElementById('bookmark');
-			bookmarkLink.href = link;
-		}
+				// Title
+				for (var i = 0; i < title.length; i++) {
+					console.log(title[i].innerText);
+				}
+				// Pre Display
+				for (var i = 0; i < pre.length; i++) {
+					pre[i].style.display = "none"
+				}
+				// Image display (not working currently)
+				for (var i = 0; i < image.length; i++) {
+					image[i].style.display = "none"
+				}
 
-	</script>
+				function setBookmark(link){
+					var bookmarkLink = document.getElementById('bookmark');
+					bookmarkLink.href = link;
+				}
+			</script>
+
+
+	</div>
+
+	<div class="chatSpace">
+		<h3>Discuss the book anytime!</h3>
+
+
+		<section id="chatroom">
+			<section id="feedback"></section>
+		</section>
+
+
+		<section id="input_zone"> 
+			<input id="message" class="vertical-align" type="text" />
+			<button id="send_message" class="vertical-align" type="button">Send</button>
+		</section>
+
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="public/js/chat.js"></script>
+	</div>
 
 </div>
-<div class="chatSpace">
 
-</div>
-</div>
+
 </body>
 </html>

@@ -44,11 +44,11 @@ body {
 /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
-    width: 3; /* 0 width - change this with JavaScript */
+    width: 100px; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
-    left: 0;
+    left: ;
     background-color: #111; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
@@ -59,7 +59,7 @@ body {
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 15px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -87,3 +87,71 @@ a{
 a:hover {
     color: black;
 }
+#main{
+  display: grid;
+  grid-template-columns: 60% 30%;
+  grid-template-rows:auto auto;
+}
+
+.bookSpace{
+    background-color: grey; 
+    margin-left: 100px;
+
+}
+
+.chatSpace{
+    background-color: pink;
+    align-self: right;
+    size: 500px;
+
+}
+
+section#chatroom {
+    border: 5px inset #8258FA;
+    height: 500px;
+    overflow: auto;
+}
+
+section#input_zone {
+    text-align: center;
+    background-color: #BCA9F5;
+}
+
+
+input#username {
+    font-family: 'Comfortaa', sans-serif;
+}
+
+input#message {
+    display: inline-block;
+    width: 88%;
+    height: 50px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 2vh;
+}
+
+button#send_message {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+
+p.message {
+    margin: 0px;
+    width: 100%;
+    height: 40px;
+    font-size: 2vh;
+    font-family: 'Comfortaa', sans-serif;
+    padding: 1vh;
+}
+
+.message:nth-child(even) {
+    background-color: #81DAF5;
+}
+
+.message:nth-child(odd) {
+    background-color: #81BEF7;
+}
+
+
+
