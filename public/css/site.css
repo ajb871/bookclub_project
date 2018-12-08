@@ -33,11 +33,15 @@ body {
 	font-size: 12pt
 }
 
-.shelves{
+.shelves form{
   display: grid;
   align-self: left;
   grid-template-columns: 30% 30% 30%;
   grid-template-rows:auto auto;
+}
+
+.shelves input {
+   margin: 20%;
 }
 
 #main{

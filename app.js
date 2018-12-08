@@ -31,7 +31,11 @@ var books = ['Frankenstein.html', 'Pride_and_Prejudice.html', 'Tom_Sawyer.html']
 
 ////// Sign up Page here //////
 app.get('/', function(req, res){
-  res.render('signup', {success: null, error: null});
+  if (currUser === null){
+    res.render('signup', {success: null, error: null});
+  } else {
+    redirect('/home');
+  }
 });
 
 app.post('/', function(req, res){
@@ -69,9 +73,6 @@ app.post('/', function(req, res){
         currUser = newUser;
         res.redirect('/home');
       }
-
-      // This will redirect to user's Home page
-      res.render('signup', {success: "Welcome, new user!", error: null});
 
     } else {
       res.render('signup', {success: null, error: "Passwords have to be the same!"});
@@ -137,7 +138,11 @@ app.get('/book', function(req,res){
     res.redirect('/login');
   } else {
     res.render('book',{user: currUser});
-  }
+}
+
+app.post('/home', function(req,res){
+  let book = req.body.book;
+});
 
   //
 /*io.on('connection', (socket) => {

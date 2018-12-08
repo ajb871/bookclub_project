@@ -14,18 +14,25 @@
 	    <p>New user? <a href="/signup">Join a book club!</a></p>
 	    <% } else { %>
 		<h1>Welcome to your Library!</h1>
+			<% if (user.book === null){%>
+			<h2>Please choose a book club for this month.</h2>
+			<a href="/book">go to default book for testing (user.book will still be null)</a>
+			<div class="container">
+				
+				<div class = "shelves">
+					<form action="/" method="post">
+						<input type="button" value="1">
+						<input type="button" value="2">
+						<input type="button" value="3">
+					</form>
+				</div>
 
-		<h2>Please choose a book club for this month.</h2>
-		<a href="/book">go to defualt book</a>
-		<div class="container">
-			
-			<div class = "shelves">
-				<ul class = "book"><h3>1</h3></ul>
-				<ul class = "book"><h3>2</h3></ul>
-				<ul class = "book"><h3>3</h3></ul>
 			</div>
+			<% } else { %>
+				<a href="/book">Go to your book!</a>
+				<p>your book is <%= user.book %></p>
+			<% } %>
 
-		</div>
 		<% } %>
 
 	</div>
