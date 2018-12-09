@@ -8,7 +8,8 @@ var request = require('request');
 var bodyParser = require('body-parser');
 
 // Views & Static
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static('./'));
 app.set('view engine', 'ejs');
 
@@ -25,9 +26,9 @@ var books = ['Frankenstein.html', 'Pride_and_Prejudice.html', 'Tom_Sawyer.html']
 
 ///listening for socket.io connection on every connection
 
-/*io.on('connection',(socket) => {
+io.on('connection',(socket) => {
   console.log('some user connected');
-})*/
+})
 
 ////// Sign up Page here //////
 app.get('/', function(req, res){
@@ -38,7 +39,7 @@ app.get('/', function(req, res){
   }
 });
 
-app.post('/', function(req, res){
+app.post('/signup', function(req, res){
   let username = req.body.username;
   let password = req.body.password;
   let password2 = req.body.password2;
@@ -52,6 +53,7 @@ app.post('/', function(req, res){
   }
 
   if (confirmUsername){
+    console.log('error in app.post/: username taken')
     res.render('signup', {success: null, error: 'That username is taken, try again!'});
   } else {
     if (password === password2){
@@ -76,7 +78,7 @@ app.post('/', function(req, res){
 
     } else {
       res.render('signup', {success: null, error: "Passwords have to be the same!"});
-      console.log(password, password2);
+      console.log('error in app.post/, password maatch: '+password+ password2);
     }   
   }
 }
@@ -119,33 +121,55 @@ app.post('/login', function(req, res){
 
 });
 
+// Signout path
 app.get('/signout', function(req,res){
   currUser = null;
   res.redirect('/login');
+});
 
-})
-
-
+// Home page with currUser
 app.get('/home', function(req,res){
   res.render('home',{user: currUser}); 
 });
 
-////this is a comment to test Sawyer's commits
+// New User chooses their book here!
+app.post('/home', function(req,res){
+  let book = req.body.bookChoice;
+  console.log(book);
+  currUser.book = book;
 
+  // Update data in user array and json file!
+  for (let i=0; i<userData.length; i++){
+      if (userData[i].username === currUser.username){
+        userData[i] = currUser;
+      }
+  }
+
+  let newData = JSON.stringify(userData);
+  fs.writeFile('users.json', newData, finished);
+
+  function finished(err) {
+    console.log(req.body);
+    console.log(currUser);
+    res.redirect('/book');
+  }
+
+  
+});
+
+////this is a comment to test Sawyer's commits
+// Book reading page!
 app.get('/book', function(req,res){
   // Pass a book to the "book" EJS page -> will come from the user's data 
   if(currUser === null){
+    // Redirect if not logged in
     res.redirect('/login');
   } else {
     res.render('book',{user: currUser});
 }
 
-app.post('/home', function(req,res){
-  let book = req.body.book;
-});
-
-  //
-/*io.on('connection', (socket) => {
+//
+io.on('connection', (socket) => {
   console.log('New user connected');
 
     //listen on change_username
@@ -160,7 +184,7 @@ app.post('/home', function(req,res){
     socket.on('typing', (data) => {
       socket.broadcast.emit('typing', {username : socket.username})
     })
-})*/
+});
 });
 
 
