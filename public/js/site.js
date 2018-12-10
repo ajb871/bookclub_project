@@ -24,8 +24,8 @@ function closeChat() {
 		document.getElementById("chatclosebtn").innerHTML = "&#10094";
 		chatOpen = false;
 	} else {
-		document.getElementById("chatSpace").style.width = "20%";
-		document.getElementById("chatclosebtn").style.right = "20%";
+		document.getElementById("chatSpace").style.width = "16%";
+		document.getElementById("chatclosebtn").style.right = "16%";
 		document.getElementById("chatclosebtn").innerHTML = "&#10095";
 		chatOpen = true;
 	}

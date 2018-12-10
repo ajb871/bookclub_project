@@ -65,6 +65,7 @@ app.post('/signup', function(req, res){
         bookmark: null,
         notes: []
       }
+      currUser = newUser;
       // If free username & passwords match, push & write to userdata
       userData.push(newUser);
       let finalData = JSON.stringify(userData);
@@ -78,7 +79,7 @@ app.post('/signup', function(req, res){
 
     } else {
       res.render('signup', {success: null, error: "Passwords have to be the same!"});
-      console.log('error in app.post/, password maatch: '+password+ password2);
+      console.log('error in app.post/, password match: '+password+ password2);
     }   
   }
 }

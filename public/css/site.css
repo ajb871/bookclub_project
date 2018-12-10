@@ -33,16 +33,30 @@ body {
 	font-size: 12pt
 }
 
-.shelves form{
-  display: grid;
-  align-self: left;
-  grid-template-columns: 30% 30% 30%;
-  grid-template-rows:auto auto;
+.shelves {
+    transition: 0.3;
+}
+.shelves img {
+    width: 20%;
+    margin: 5%;
+    margin-bottom: 0;
 }
 
 .shelves input {
-   margin: 20%;
+    width: 30%;
 }
+
+.shelves input[type=submit]{
+    margin-top: 20px;
+    border: 0px white;
+    border-radius: 30px;
+    padding: 15px;
+    font-size: 20pt;
+}
+.shelves input[type=submit]:hover{
+    background-color: #f1f1f1;
+}
+
 
 #main{
     width: 100%;
@@ -81,6 +95,8 @@ body {
     transition: 0.3s;
 }
 
+/*@media only screen and (max-width: )*/
+
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
@@ -98,7 +114,7 @@ body {
 }
 
 #chatclosebtn {
-    right: 20%;
+    right: 16%;
 }
 
 .sidenav .openbtn {
@@ -115,7 +131,7 @@ a:hover {
 }
 .bookSpace{
     margin: 0px;
-    margin-left: 10%;
+    margin-left: 12%;
     width: 70%;
     text-align: center;
 }
@@ -132,7 +148,7 @@ a:hover {
     position: fixed;
     right: 0;
     bottom: 0;
-    width: 20%;
+    width: 16%;
     height: 100%;
 }
 

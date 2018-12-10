@@ -10,29 +10,39 @@
 		<!-- Check if book is selected yet -->
 		<% if (user === null){ %>
 		<h1>Welcome to Book Club!</h1>
-	    <h2><a href="/login">Sign in here</a> to view your books</h2>
-	    <p>New user? <a href="/signup">Join a book club!</a></p>
-	    <% } else { %>
+		<h2><a href="/login">Sign in here</a> to view your books</h2>
+		<p>New user? <a href="/signup">Join a book club!</a></p>
+		<% } else { %>
 		<h1>Welcome to your Library!</h1>
-			<% if (user.book === null){%>
-			<h2>Please choose a book club for this month.</h2>
-			<a href="/book">go to default book for testing (user.book will still be null)</a>
-			<div class="container">
-				
-				<div class = "shelves">
-					<form action="/home" method="post">
-						<input name="bookChoice" type="radio" value="Frankenstein.html">
-						<input name="bookChoice" type="radio" value="Pride_and_Prejudice.html">
-						<input name="bookChoice" type="radio" value="Tom_Sawyer.html">
-						<input type="submit" name="submit-book">
-					</form>
-				</div>
+		<% if (user.book === null){%>
+		<h2>Please choose a book club for this month.</h2>
+		<a href="/book">go to default book for testing (user.book will still be null)</a>
+		<div class="container">
+
+			<div class = "shelves">
+				<img src="content/Frankenstein.jpg">
+				<img src="content/Pride_and_Prejudice.jpg">
+				<img src="content/Tom_Sawyer.jpg">
 
 			</div>
-			<% } else { %>
-				<a href="/book">Go to your book!</a>
-				<p>your book is <%= user.book %></p>
-			<% } %>
+
+			<div class="shelves" align="center">
+				<form action="/home" method="post">
+					<input name="bookChoice" type="radio" value="Frankenstein.html">
+					<input name="bookChoice" type="radio" value="Pride_and_Prejudice.html">
+					<input name="bookChoice" type="radio" value="Tom_Sawyer.html">
+					<input type="submit" name="submit-book" value="choose book!">
+
+				</form>
+			</div>
+
+
+		</div>
+		<% } else { %>
+		<a href="/book">Go to your book!</a>
+		<p>your book is <%= user.book %></p>
+		<a href="/signout">signout</a>
+		<% } %>
 
 		<% } %>
 
