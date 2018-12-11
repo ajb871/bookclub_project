@@ -172,22 +172,18 @@ app.get('/book', function(req,res){
 
 io.on('connection',function(socket) {
   console.log('some user connected');
-  io.on('connection', (socket) => {
-  console.log('New user connected');
+  //listen on change_username
+  //listen on new_message
+  socket.on('chat message', function(msg){
+      //broadcast the new message
+      // io.sockets.emit('chat message', {message : data.message ///username : socket.username////});
+      io.emit('chat message', msg);
+  })
 
-    //listen on change_username
-    //listen on new_message
-    socket.on('new_message', (data) => {
-        //broadcast the new message
-        io.sockets.emit('new_message', {message : data.message ///username : socket.username////
-        });
-    })
-
-    //listen on typing
-    socket.on('typing', (data) => {
-      socket.broadcast.emit('typing', {username : socket.username})
-    })
-  });
+  //listen on typing
+  // socket.on('typing', (data) => {
+  //   socket.broadcast.emit('typing', {username : socket.username})
+  // })
 })
 
 //
