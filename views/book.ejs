@@ -45,7 +45,7 @@
 
 
 		<section id="chatroom">
-			<section id="feedback"></section>
+			<ul id="messages"></ul>
 		</section>
 
 
@@ -56,7 +56,7 @@
     		</form>
 		</section>
 
-			<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+			<script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
 		    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 		    <script>
 		      $(function () {
@@ -68,7 +68,6 @@
 		        });
 		        socket.on('chat message', function(msg){
 		          $('#messages').append($('<li>').text(msg));
-		          window.scrollTo(0, document.body.scrollHeight);
 		        });
 		      });
 		    </script>
