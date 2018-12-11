@@ -141,6 +141,10 @@ a:hover {
     font-weight: bold;
 }
 
+.bookSpace p {
+    text-align: left;
+}
+
 .chatSpace{
     transition: 0.3s;
 

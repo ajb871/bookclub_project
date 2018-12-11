@@ -1,9 +1,14 @@
 // Dependencies //
 var express = require('express');
-var app = express();
+
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var port = process.env.PORT || 3000;
+
 var ejs = require('ejs');
 const fs = require('fs');
-const io = require('socket.io')(app.listen());
+// const io = require('socket.io')(app.listen());
 var request = require('request');
 var bodyParser = require('body-parser');
 
@@ -25,10 +30,6 @@ var books = ['Frankenstein.html', 'Pride_and_Prejudice.html', 'Tom_Sawyer.html']
 
 
 ///listening for socket.io connection on every connection
-
-io.on('connection',(socket) => {
-  console.log('some user connected');
-})
 
 ////// Sign up Page here //////
 app.get('/', function(req, res){
@@ -169,8 +170,9 @@ app.get('/book', function(req,res){
     res.render('book',{user: currUser});
 }
 
-//
-io.on('connection', (socket) => {
+io.on('connection',function(socket) {
+  console.log('some user connected');
+  io.on('connection', (socket) => {
   console.log('New user connected');
 
     //listen on change_username
@@ -185,12 +187,17 @@ io.on('connection', (socket) => {
     socket.on('typing', (data) => {
       socket.broadcast.emit('typing', {username : socket.username})
     })
+  });
+})
+
+//
 });
+
+
+
+http.listen(port, function(){
+  console.log('listening on *:' + port);
 });
-
-
-
-
-app.listen(3000, function(){
-  console.log('app listening on port 3000!')
-});
+// app.listen(3000, function(){
+//   console.log('app listening on port 3000!')
+// });
