@@ -36,7 +36,7 @@ app.get('/', function(req, res){
   if (currUser === null){
     res.render('signup', {success: null, error: null});
   } else {
-    redirect('/home');
+    res.redirect('/home');
   }
 });
 
@@ -177,7 +177,7 @@ io.on('connection',function(socket) {
   socket.on('chat message', function(msg){
       //broadcast the new message
       // io.sockets.emit('chat message', {message : data.message ///username : socket.username////});
-      io.emit('chat message', {msg});
+      io.emit('chat message', msg);
   })
 
   //listen on typing
