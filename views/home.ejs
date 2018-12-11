@@ -15,14 +15,14 @@
 		<% } else { %>
 		<h1>Welcome to your Library!</h1>
 		<% if (user.book === null){%>
-		<h2>Please choose a book club for this month.</h2>
+		<h3>Here's what our users are reading this month.</h3>
 		<a href="/book">go to default book for testing (user.book will still be null)</a>
 		<div class="container">
 
 			<div class = "shelves">
-				<img src="content/Frankenstein.jpg">
-				<img src="content/Pride_and_Prejudice.jpg">
-				<img src="content/Tom_Sawyer.jpg">
+				<img src="content/Frankenstein.jpg" height="300px">
+				<img src="content/Pride_and_Prejudice.jpg" height="300px">
+				<img src="content/Tom_Sawyer.jpg" height="300px">
 
 			</div>
 
@@ -31,7 +31,7 @@
 					<input name="bookChoice" type="radio" value="Frankenstein.html">
 					<input name="bookChoice" type="radio" value="Pride_and_Prejudice.html">
 					<input name="bookChoice" type="radio" value="Tom_Sawyer.html">
-					<input type="submit" name="submit-book" value="choose book!">
+					<input type="submit" name="submit-book" value="Choose a bookclub!">
 
 				</form>
 			</div>
@@ -39,8 +39,8 @@
 
 		</div>
 		<% } else { %>
-		<a href="/book">Go to your book!</a>
-		<p>your book is <%= user.book %></p>
+		<a href="/book">Go to your bookclub</a>
+		<p>Your current bookclub is <%= user.book %></p>
 		<a href="/signout">signout</a>
 		<% } %>
 
